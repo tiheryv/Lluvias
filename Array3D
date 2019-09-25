@@ -1,0 +1,57 @@
+'''
+Array 3D
+- Array3D(rows,cols,depth)
+- get_num_rows()
+- get_num_cols()
+- get_num_depth()
+- set_item(row,col,depth,value)
+- get_item(row,col,depth)
+- clearing(value)
+- to_string()
+'''
+
+class Array3D:
+    def __init__(self,rows,cols,depth):
+        self.__data=[]
+        self.__rows=rows
+        self.__cols=cols
+        self.__depth=depth
+
+        for i in range(depth):
+            tmp=[]
+            for j in range(rows):
+                tmp2=[]
+                for k in range(cols):
+                    tmp2.append(None)
+                tmp.append(tmp2)
+            self.__data.append(tmp)
+
+    def to_string(self):
+        print(self.__data)
+
+    def get_num_rows(self):
+        return self.__rows
+
+    def get_num_cols(self):
+        return self.__cols
+
+    def get_num_depth(self):
+        return self.__depth
+
+    def set_item(self,row,col,depth,value):
+        if row>=0 and row<=self.__rows and col>=0 and col<=self.__cols and depth>=0 and depth<=self.__depth:
+            self.__data[depth][row][col]=value
+        else:
+            return "Error en parámetros"
+
+    def get_item(self,row,col,depth):
+        if row>=0 and row<=self.__rows and col>=0 and col<=self.__cols and depth>=0 and depth<=self.__depth:
+            return self.__data[depth][row][col]
+        else:
+            return "Error en parámetros"
+
+    def clearing(self,value):
+        for i in range(self.__depth):
+            for j in range(self.__rows):
+                for k in range(self.__cols):
+                    self.__data[i][j][k]=value
